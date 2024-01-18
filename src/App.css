@@ -69,3 +69,6 @@ ul{
   border-radius: 15px 15px 0px 0px ;
   background-color: rgb(65, 138, 52);
 }
+.entourageRouge{
+  border: red 2px dashed;
+}

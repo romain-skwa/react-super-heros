@@ -8,15 +8,15 @@ export default function Personnages({
     jeuxVideo="truc",
     texteajoute = <em>Super-Héros</em>,
     secret="",
-    entourageRouge,
     entourage,
+    nomClique,
     ...concernant_ce_personnage}){
         const [identitéSecrete, setIdentitéSecrete] = useState(false);
 
     return (
         <div className="personnage">
             {identitéSecrete === true ? <img alt={`Portrait de ${nom}`} src={portraitSecret}></img> : <img alt={`Portrait de ${nom}`} src={portraitNormal}></img>}
-            <h2>{nom}</h2>
+            <h2 className={`classeDorigine ${entourage === true ? "classeDeRemplacement" : null }`} onClick={() => nomClique(nom)}>{nom}</h2>
             <div className="description">{description}</div>
             <div>Présent dans le jeu :
                 <ul>

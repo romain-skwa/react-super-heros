@@ -1,4 +1,6 @@
-
+*{
+  box-sizing: border-box;
+}
 body{
   background: url(../public/images/south-park-decor-arret-bus.jpg);
 }
@@ -11,6 +13,7 @@ body{
 }
 .fiche_personnage{
   display: flex;
+  flex-wrap: wrap;
 }
 h1{
   text-align: center;
@@ -26,7 +29,7 @@ ul{
   border: 2px solid rgb(136, 212, 126);
   margin: 1rem;
   padding: 20px;
-  width: 20vw;
+  width: 18vw;
   border-radius: 20px;
   transition-duration: 0.2s;
   display: flex; flex-direction: column;

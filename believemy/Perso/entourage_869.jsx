@@ -1,15 +1,15 @@
 import { useState } from "react";
 export default function Personnages({
-    portraitNormal = "../public/images/anonyme.jpg",
-    portraitSecret = "../public/images/anonyme.jpg",
-    nom = "Il faut donner un nom",
-    description = "Pas de description pour l'instant",
+    portraitNormal,
+    portraitSecret,
+    nom,
+    description,
     superHero="Super-héros",
     jeuxVideo="truc",
     texteajoute = <em>Super-Héros</em>,
-    secret="Pas de secret",
+    secret="",
     entourage,
-    nomClique = () => {},
+    nomClique,
     ...concernant_ce_personnage}){
         const [identitéSecrete, setIdentitéSecrete] = useState(false);
 
@@ -31,18 +31,3 @@ export default function Personnages({
         </div>
     );
 }
-        /* 
-        Créer une liste en Javascript. Vidéo 856
-            Faut écrire "key". Vidéo 858
-            <p>Présent dans le jeu :
-                <ul>
-                    {jeuxVideo.map((jeux) =>(
-                        <li key={jeux}>{jeux}</li>
-                    ))}
-                </ul>
-            </p>
-
-        Dans le fichier jsx, on écrit
-            jeuxVideo={["Et tous les jeux en fait","Et voila"]}
-
-        */

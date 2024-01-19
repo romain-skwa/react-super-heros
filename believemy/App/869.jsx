@@ -1,9 +1,15 @@
 import "./App.css";
 import Personnages from "./components/Personnages";
+import { useState } from "react";
 
 export default function App(){
+  // state
+  const [entourageRouge, setEntourageRouge] = useState();
 
-    const [entourageRouge, setEntourageRouge] = useState();
+  // Fonction
+  const nomClique = (nom) => {
+    setEntourageRouge(nom);
+  };
 
   return (
       <main>
@@ -18,6 +24,7 @@ export default function App(){
                          description="Kyle passe le plus clair de son temps avec ses trois camarades de classe à jouer ou essayer de se tirer de situations compliquées ou dangereuses. Une amitié forte l'unit à Stan, qui lui sauve la vie dans plusieurs occasions. Il s'entend également bien avec Kenny mais très mal avec Cartman, dont il supporte très mal les défauts et surtout l'antisémitisme obsessionnel."
                          secret="Homme cerf-volant"
                          entourage = {entourageRouge == "Kyle Broflovski"}
+                         nomClique={nomClique}                       
                           />
             <Personnages nom="Eric Cartman"
                          portraitNormal="../../public/images/cartman-portrait-carré.jpg" 
@@ -26,6 +33,7 @@ export default function App(){
                          description="Il apparaît pour la première fois dans les deux courts-métrages de L'Esprit de Noël en 1992 et 1995, puis dans l'épisode pilote de la série, Cartman a une sonde anale, le 13 août 1997." 
                          secret="Le Coon"
                          entourage = {entourageRouge == "Eric Cartman"}
+                         nomClique={nomClique}                       
                          />
             <Personnages nom="Stan Marsh" 
                          portraitNormal="../../public/images/stan-marsh-portrait-carré.jpg" 
@@ -33,6 +41,7 @@ export default function App(){
                          description="Stan est fréquemment en désaccord avec Cartman, lui reprochant son comportement et se moquant ouvertement de son poids5. Malgré cela, Stan n'a pas de relations aussi conflictuelles avec Cartman que Kyle ou Kenny. D'aucuns pensent que Stan est l'une des personnes que Cartman apprécie le plus, ou du moins vanne le moins, parce qu'il est catholique et de classe moyenne comme lu." 
                          secret="Boîte à outils"
                          entourage = {entourageRouge == "Stan Marsh"}
+                         nomClique={nomClique}                       
                           />
             <Personnages nom="Kenny McCormick" 
                          portraitNormal="../../public/images/kenny-portrait-carré.jpg" 
@@ -40,6 +49,7 @@ export default function App(){
                          description="Kenny est un des personnages principaux de la série, à l'instar de Stan Marsh, Kyle Broflovski et Eric Cartman. Sa voix assourdie et inaudible (à cause de la capuche de son anorak recouvrant sa bouche et la moitié de son visage) est celle de Dee Bradley Baker. Quoique la majorité de ses paroles soient incompréhensibles pour le spectateur, les personnages de la série semblent les comprendre sans trop de difficulté." 
                          secret="Mystérion"
                          entourage = {entourageRouge == "Kenny McCormick"}
+                         nomClique={nomClique}                       
                           />
             <Personnages nom='Leopold "Butters" Stotch' 
                          portraitNormal="../../public/images/butters-portrait-carré.jpg"
@@ -49,6 +59,7 @@ export default function App(){
                          secret="Professeur Chaos" 
                          texteajoute="Super Vilain"
                          entourage = {entourageRouge == 'Leopold "Butters" Stotch'}
+                         nomClique={nomClique}                       
                          />
         </section>
       </main>

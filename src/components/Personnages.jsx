@@ -9,14 +9,13 @@ export default function Personnages({
     texteajoute = <em>Super-Héros</em>,
     secret="Pas de secret",
     entourage,
-    nomClique = () => {},
     ...concernant_ce_personnage}){
         const [identitéSecrete, setIdentitéSecrete] = useState(false);
 
     return (
         <div className="personnage">
             {identitéSecrete === true ? <img alt={`Portrait de ${nom}`} src={portraitSecret}></img> : <img alt={`Portrait de ${nom}`} src={portraitNormal}></img>}
-            <h2 className={`${entourage === true ? "classeDeRemplacement" : "classeDorigine" }`} onClick={() => nomClique(nom)}>{nom}</h2>
+            <h2>{nom}</h2>
             <div className="description">{description}</div>
             <div>Présent dans le jeu :
                 <ul>

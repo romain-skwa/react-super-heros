@@ -1,6 +1,6 @@
 import "./App.css";
 import Personnages from "./components/Personnages";
-import { useRef, useState, useEffect } from "react";
+import {useRef, useState} from "react";
 
 export default function App(){
   // state
@@ -11,27 +11,24 @@ export default function App(){
     setEntourageRouge(nom);
   };
   
-  // state Formulaire
-  const [nomNouveauSuperhero, setNomNouveauSuperhero] = useState("Anonyme");
-  const [descriptionNouveauSuperhero, setDescriptionNouveauSuperhero] = useState("Entrez une description");
-  const [photoNouveauSuperhero, setphotoNouveauSuperhero] = useState();
-
-  //--------------------------Découvrons useRef et modifions nos champs de formulaire--------------------
   // Variables
   const portraitNormal = useRef();
   const nom = useRef();
   const description = useRef();
-  
-  // Fonction
+
+  //---------Découvrons useRef et modifions nos champs de formulaire-----seulement quand on clique---------------
+  // state Formulaire
+  const [nomNouveauSuperhero, setNomNouveauSuperhero] = useState("Anonyme");
+  const [descriptionNouveauSuperhero, setDescriptionNouveauSuperhero] = useState("Entrez une description");
+  const [photoDuSuperhero, setPhotoDuSuperhero] = useState();
+
+  // Fonction pour transmettre les données écrites dans le formulaire quand on clique sur le bouton
   const sauvegarderSuperHero = ()=> {
     setNomNouveauSuperhero(nom.current.value);
     setDescriptionNouveauSuperhero(description.current.value);
-    setphotoNouveauSuperhero(portraitNormal.current.value);
+    setPhotoDuSuperhero(portraitNormal.current.value);
     }
-  //--------Utilisons le useEffect pour avoir un focus dans le champ "photo" dès l'ouverture de la page-----------------------
-  useEffect(() => {
-    portraitNormal.current.focus();
-  }, []);
+  //---------------------------------------------------------------------------------------------------
 
   return (
       <main>
@@ -42,7 +39,7 @@ export default function App(){
             <Personnages nom="Kyle Broflovski"
                          portraitNormal="../../public/images/kyle-portrait-carré.jpg"
                          portraitSecret="../public/images/cerf-volant-portrait-carré.jpg"
-                         jeuxVideo={["Et tous les jeux en fait"]} // Même s'il n'y qu'un seul titre, il faut l'écrire dans un tableau.
+                         jeuxVideo="Et tous les jeux en fait"
                          description="Kyle passe le plus clair de son temps avec ses trois camarades de classe à jouer ou essayer de se tirer de situations compliquées ou dangereuses. Une amitié forte l'unit à Stan, qui lui sauve la vie dans plusieurs occasions. Il s'entend également bien avec Kenny mais très mal avec Cartman, dont il supporte très mal les défauts et surtout l'antisémitisme obsessionnel."
                          secret="Homme cerf-volant"
                          entourage = {entourageRouge == "Kyle Broflovski"}
@@ -87,7 +84,7 @@ export default function App(){
             <Personnages 
             nom={nomNouveauSuperhero} 
             description={descriptionNouveauSuperhero}
-            portraitNormal={ photoNouveauSuperhero != "" ? photoNouveauSuperhero : undefined  }
+            portraitNormal={            photoDuSuperhero != "" ? photoDuSuperhero : undefined          }
             />
             
             <div style={{
@@ -139,7 +136,7 @@ export default function App(){
                 <div style={{// On ajoute ce bouton pour envoyer les infos seulement quand on clique
                   display: "flex",
                   justifyContent: "end"
-                }}
+                }} // On va détecter un clic avec onClick
                   onClick={sauvegarderSuperHero} // La fonction s'exécute quand on clique
                 >
                   <button>Modifier</button>
